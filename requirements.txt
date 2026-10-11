@@ -1,0 +1,9 @@
+pandas
+requests
+beautifulsoup4
+lxml
+openpyxl
+pdfplumber
+matplotlib
+statsmodels
+cryptography<47

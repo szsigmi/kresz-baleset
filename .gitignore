@@ -1,0 +1,4 @@
+.venv/
+data/raw/cache/
+__pycache__/
+*.py[cod]
