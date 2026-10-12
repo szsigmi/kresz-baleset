@@ -37,3 +37,30 @@
 - A CSV-be bekerült a forrás munkalaposzlopa (`forras_oszlop`), hogy az azonos nevű, azonos értéksorú exportoszlopok visszakövethetők legyenek. Az 01/02 szkriptet ismét lefuttattam.
 - A 4.c régi STADAT-táblás eltérései közül a Mindösszesen 5 eltérése mind 2020-as; halálos eltérései 2/2 2020-asak, súlyosnál 5-ből 1 (2017-12), könnyűnél 6-ból 1 (2017-12) nem 2020-as.
 - A `.DS_Store` rendszerfájlokat a `.gitignore` kizárja a verziókövetésből.
+
+## 2026-10-12 — 2. lépés, A rész: KRESZ-forrásfeltárás
+
+- Sikeres robots.txt-próba a projekt `.venv` requests csomagjával; a `/search/*` tiltást tiszteletben tartottam.
+- Létrejött a `docs/forrasok_kresz.md`: NJT KRESZ-oldal, időállapotlista, három minta-időállapot és egy módosító rendelet oldalának forrásvizsgálata, módszerek lefedettsége, letöltési/feldolgozási terv.
+- A megnyitott oldalválaszok a `data/raw/cache/` mappába kerültek; tömeges letöltés nem történt.
+- Bizonytalanság: a jogszabályoldal export kezelőfelületének önálló fájlformátumát nem igazoltam; a végleges módosításjegyzék a későbbi feldolgozás feladata.
+
+## 2026-10-12 — KRESZ-kísérleti kör előkészítése
+
+- A robots.txt `/ajax/` útvonalra vonatkozó megjegyzése bekerült a `docs/forrasok_kresz.md` fájlba; javítottam a verziólista elemszámát is: 26 állapot, a legkorábbi felsorolt verzió 16.
+- A változatlan JSON-válasz `data/raw/kresz_idoallapotok.json` néven, a 16. verzió HTML-je `data/raw/kresz_1975-1-20-24_16.html` néven került a nyers adatok közé; a `data/processed/kresz_idoallapotok.csv` 24, 2010–2025 közötti állapotkezdést tartalmaz.
+- A 15. verzió URL-je a főoldalra irányított át (HTTP 200, végső URL: `https://njt.jog.gov.hu/`, 133403 bájt). A verziólista nem tartalmaz 15. verziót, ezért a kért 15→16 szövegösszevetés és pozitív kontroll nem végezhető el; itt megálltam, összehasonlító CSV és feldolgozószkript még nem készült.
+
+## 2026-10-12 — KRESZ-kísérleti kör, 16→17
+
+- A `docs/forrasok_kresz.md` rögzíti, hogy a 2010-01-01-i váltásnak nincs letölthető előző állapota; a 16. verzió az összevetések kiindulópontja, a korlát a 2011-ben induló baleseti idősorra nincs hatással.
+- A változatlan 16. és 17. verzió HTML-je, valamint a 280/2010. (XII. 15.) Korm. rendelet oldala a `data/raw/` alatt van. A 03-as szkript elkészült; a 16→17 összevetés két új rendelkezést talált, mindkettő lábjegyzete a rendelet 6. §-ára mutat.
+- A rendelet saját szövegében a 6. § a KRESZ 37. §-át (6) és (7) bekezdéssel egészíti ki; a rendelet és a 17. állapot kezdőnapja egyaránt 2011-01-01. A kétforrásos kontroll egyezett.
+- Futtatással a verzió-CSV is újragenerálódott; 23 összevethető állapotkezdés van 2010-01-02 és 2025-12-31 között. A kísérleti változás-CSV két sort tartalmaz. Tömeges lekérés nem történt.
+
+## 2026-10-12 — KRESZ-változások teljes időállapot-összevetése
+
+- Letöltöttem és gyorsítótáraztam a 18–39. KRESZ-időállapotokat (kérések között legalább 2 másodperccel), majd kiterjesztettem és lefuttattam a `scripts/03_kresz_valtozasok.py` szkriptet mind a 23 összevethető váltásra.
+- Elkészült a `data/processed/kresz_valtozasok.csv` (61 sor: 32 új, 29 módosított; 0 hatályon kívül helyezett; 0 ábraváltozás; nincs lábjegyzet alapján azonosíthatatlan jogszabály). A 2026-os állapotkezdések a verziólistában vizsgálati időszakon kívüliként vannak jelölve.
+- Négy kontrollmintát ellenőriztem a módosító jogszabályok időállapot szerinti saját szövegével; mindegyikben egyeztek az azonosított KRESZ-rendelkezések. A kért hatályon kívül helyezési mintához nem volt valódi átmenet, ezért a korábban törlésnek látszott 2017-es §-cserét kontrolláltam, és módosítottként osztályoztam.
+- Elkészült a `docs/kresz_valtozasok_osszegzes.md`; frissült a `docs/forrasok_kresz.md`. A verziólisták, minta-jogszabályoldalak és módosítórendelet-időállapotok gyorsítótárazva vannak. Tömeges módosítórendelet-letöltés nem történt.
