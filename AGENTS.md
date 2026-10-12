@@ -1,8 +1,11 @@
-# Projekt: KRESZ-módosítások és közúti balesetek (2005–2025)
+# Projekt: KRESZ-módosítások és közúti balesetek (2011–2025)
 
-Egyetemi beadandó az „AI a társadalomtudományokban” kurzusra. A cél egy dokumentált, ellenőrizhető adatbázis, amely a KRESZ (1/1975. (II. 5.) KPM–BM együttes rendelet) módosításait a magyarországi személysérüléses közúti balesetek adataival kapcsolja össze. A munkafolyamat átláthatósága ugyanolyan fontos, mint az eredmény.
+Egyetemi beadandó az „AI a társadalomtudományokban” kurzusra. A cél egy dokumentált, ellenőrizhető adatbázis, amely a KRESZ (1/1975. (II. 5.) KPM–BM együttes rendelet) módosításait a magyarországi személysérüléses közúti balesetek adataival kapcsolja össze. A vizsgálati időszak 2011–2025; a Statinfo kategóriarendszere 2011-től egységes. A munkafolyamat átláthatósága ugyanolyan fontos, mint az eredmény.
 
 ## Alapszabályok
+
+10. Tartsd tiszteletben a robots.txt-t: ha egy oldal kifejezetten tiltja a gépi hozzáférést, ne próbáld megkerülni, hanem kérd a hallgató kézi letöltését. Ha egy letöltés technikai hiba miatt nem sikerül (pl. tanúsítványhiba), írd le a hibát pontosan, kérd a kézi letöltést, és közben végezd el azokat a részfeladatokat, amelyek nem függenek tőle.
+11. Ha egy ellenőrzés nem talál hibát, mindig add meg, hány elemet vetett össze. Ha nem tudott semmit összevetni, azt ne „nincs eltérés”, hanem „nem végezhető el” eredményként jelentsd, és írd le, miért nem.
 
 1. Soha ne találj ki adatot, URL-t, táblakódot, jogszabályszámot vagy dátumot. Ha valamit nem találsz, írd le, hogy nem találtad, és állj meg.
 2. Minden adatsorhoz tartozzon forrás: a pontos URL és a letöltés dátuma.
