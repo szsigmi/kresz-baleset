@@ -85,3 +85,34 @@ A rendelet 2023-01-01-i időállapota a KRESZ-t módosító 1. §-ban a 4. § (1
 - 317/2020. (VII. 1.) Korm. rendelet, 2023-01-01-i időállapot: https://njt.jog.gov.hu/jogszabaly/2020-317-20-22.7; a későbbi oldal: https://njt.jog.gov.hu/jogszabaly/2020-317-20-22
 
 A kontrolloldalak és verziólisták válaszai `data/raw/` alatt vannak, az ismételt lekérések cache-e `data/raw/cache/` alatt. A későbbi hatályállapotok letöltésekor a kérések között legalább két másodperc szünetet tartottam. Tömeges módosítórendelet-letöltést nem végeztem; kontrollt négy kiválasztott váltáson végeztem.
+
+## Teljességi ellenőrzés és korrekció — 2026-10-12
+
+A korábbi összesítő fenti 61 soros száma és a „0 hatályon kívül helyezett” megállapítás **elavult, ezt a fejezet felülírja**. A 03-as feldolgozó nem vett fel minden, a NJT által `.szelet` elemben tárolt rendelkezést és a függelékeket sem dolgozta fel teljesen. A javított szkript a normál rendelkezéseket, a külön szeletként tárolt bekezdéseket és pontokat, valamint az 1. és 2. számú függelék szöveges elemeit is összeveti. A függeléki sor címkéje tartalmazza a függelék sorszámát és a tétel jelölését.
+
+Az újrafuttatott `data/processed/kresz_valtozasok.csv` **95 sort** tartalmaz: 51 új, 40 módosított és 4 hatályon kívül helyezett rendelkezést; ebből **9 sor** függeléki tétel. A tényleges hatályvesztések között szerepel a 41. § (9) bekezdése a 21→22 váltásnál, továbbá a 20. § (6) bekezdésének két külön pontja a 27→28 váltásnál. A módosító jogszabály későbbi hatályon kívül helyezését a szkript továbbra sem számolja KRESZ-rendelkezés hatályvesztésének.
+
+### 1. Maradék-összevetés
+
+Mind a **23** egymást követő állapotváltás teljes jogszövegét összevetettem rendelkezésblokkokra bontva, a lábjegyzetjelölések és szóközformázás nélkül. A diff négy átmenetnél olyan nagyobb HTML-szegmenst adott, amely több önálló rendelkezést fog össze; ezek nem maradtak le a CSV-ből:
+
+| Átmenet | A teljes szövegdiffben összevont rész | A CSV-ben lefedő rendelkezéssor(ok) |
+|---|---|---|
+| 23→24 | „Gyermekszállítás” és a hozzá tartozó (6) bekezdés, a)–b) pontok, illetve iskolabusz-feltétel | 20. § (6), 20. § (6) a), 20. § (6) b), 48. § (12) és 48. § (12) a) |
+| 24→25 | A nehéz tehergépkocsi új (14)–(17) bekezdései és a baleseti eljárás (3) bekezdésének változása | 48. § (14)–(17), 58. § (3) |
+| 27→28 | A 20. § (6) korábbi szövege, amely a következő állapotban több pontra bomlik | 20. § (6), 20. § (6) a), 20. § (6) b) |
+| 28→29 | Az 1. § új szövege több bekezdés egyetlen HTML-szegmensében | 1. § |
+
+A 21→22 diff egyetlen „(9)” jelölést mutatott üres új szövegként; ez a CSV 41. § (9) sorának hatályon kívül helyezett típusa. A fenti összevont szegmensek minden megváltozott tartalmi része visszakereshető a megadott CSV-sorokban; más, le nem fedett eltérés nem maradt.
+
+### 2. Lábjegyzet-próba
+
+A 2025-12-31-én hatályos, 39. verzióban **62** olyan lábjegyzetet találtam, amelynek módosító jogszabályát 2010 és 2025 között hirdették ki. A lábjegyzet célrendelkezését a CSV rendelkezéscímkéivel és a függeléki tételszövegekkel vetettem össze. **Hiányzó rendelkezés: 0.** A pusztán hatálybalépési napot közlő 384. lábjegyzet nem módosító jogszabály-hivatkozás, ezért nem része a 62-nek.
+
+### 3. Függelékek
+
+A 03-as szkript feldolgozza az 1. és 2. számú függelék tartalmi elemeit. A végső CSV-ben **9 sor** származik függelékből. A feldolgozó a lábjegyzetszámokat és az üres, képet hordozó szeleteket nem tekinti önálló szöveges rendelkezésnek.
+
+### Újrafuttatás
+
+Az `scripts/03_kresz_valtozasok.py` újrafuttatásával előállt a 95 soros CSV. A két teljességi próbát az `scripts/04_kresz_teljessegellenorzes.py` végzi; ismételt futáskor 23/23 átmenet diffje és a 62/62 releváns lábjegyzet célrendelkezése lefedett. A lábjegyzet-összevetés rendelkezésazonosító alapján történik, mert a lábjegyzetek történeti beiktatási hivatkozásokat és későbbi módosításokat együtt is felsorolhatnak.

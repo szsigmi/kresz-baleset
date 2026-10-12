@@ -27,25 +27,26 @@ def text_without_footnote_sup(el):
 
 
 def decode_label(jhid):
-    m = re.match(r'SZ(\d+)(.*)', jhid)
+    m = re.match(r'SZ(\d+[A-Z]?)(.*)', jhid)
     if not m:
         return jhid
-    parts = [f'{m.group(1)}. §']
+    section = re.sub(r'([0-9])([A-Z])', r'\1/\2', m.group(1)).lower()
+    parts = [f'{section}. §']
     rest = m.group(2)
-    be = re.search(r'@BE(\d+)', rest)
+    be = re.search(r'@BE(\d+[A-Z]?)', rest)
     if be and be.group(1) != '0':
-        parts.append(f"({int(be.group(1))})")
+        parts.append(f"({be.group(1).lower()})")
     po = re.search(r'@PO([A-Z])', rest)
     if po:
         parts.append(f'{chr(96 + ord(po.group(1)) - 64)})')
-    ap = re.search(r'@AP([A-Z]{2})', rest)
-    if ap:
+    for ap in re.finditer(r'@AP([A-Z]+)', rest):
         parts.append(f'{ap.group(1).lower()})')
     return ' '.join(parts)
 
 
 def visible_label(jhid, element, paragraph):
-    section = re.match(r'SZ(\d+)', jhid).group(1)
+    section = re.match(r'SZ(\d+[A-Z]?)', jhid).group(1)
+    section = re.sub(r'([0-9])([A-Z])', r'\1/\2', section).lower()
     marker = paragraph.select_one('.jel')
     marker_text = text_without_footnote_sup(marker) if marker else ''
     classes = element.get('class', [])
@@ -82,21 +83,88 @@ def read_state(version):
     path = RAW / f'kresz_1975-1-20-24_{version}.html'
     if not path.exists():
         raise FileNotFoundError(f'Hiányzó forrásállapot: {path}')
-    soup = BeautifulSoup(path.read_text(encoding='utf-8'), 'html.parser')
+    soup = BeautifulSoup(path.read_text(encoding='utf-8'), 'lxml')
     effective = soup.select_one('.hataly').get_text(' ', strip=True).rstrip('.').replace('.', '-')
     notes = {x.get('id'): x.get_text(' ', strip=True) for x in soup.select('.footnote[id]')}
     items = {}
     for el in soup.select('div.bekezdesNyito, div.betusPontNyito, div.ketbetusAlPont'):
         marker = el.find_previous_sibling('span', class_='jhId')
-        if not marker or not re.match(r'SZ\d+@BE', marker.get('id', '')):
+        if not marker or not re.match(r'SZ\d+[A-Z]?(?:@BE|$)', marker.get('id', '')):
             continue
         key = marker['id']
         p = el.find('p') or el
+        visible = p.select_one('.jel')
+        suffix = text_without_footnote_sup(visible) if visible else ''
         note_ids = [s.get('data-note-id') for s in p.select('sup[data-note-id]')]
         note = ' | '.join(notes.get(n, '') for n in note_ids if n in notes)
         images = tuple((img.get('src', ''), img.get('alt', '')) for img in el.select('img'))
         items[key] = {'label': visible_label(key, el, p), 'text': text_without_footnote_sup(p),
                       'note': note, 'images': images}
+    # A NJT egyes rendelkezéseket (például új, betűs bekezdést) szeletként ad vissza.
+    for el in soup.select('#orig div.szelet'):
+        marker = el.find_previous_sibling('span', class_='jhId')
+        if not marker or not re.match(r'SZ\d+[A-Z]?(?:@BE|$)', marker.get('id', '')):
+            continue
+        p = el.find('p') or el
+        visible = p.select_one('.jel')
+        suffix = text_without_footnote_sup(visible) if visible else ''
+        text = text_without_footnote_sup(p)
+        if not text:
+            continue
+        key = marker['id'] + ('@SL' + re.sub(r'\W+', '', suffix.lower()) if suffix else '@SL')
+        if key in items:
+            continue
+        note_ids = [s.get('data-note-id') for s in p.select('sup[data-note-id]')]
+        note = ' | '.join(notes.get(n, '') for n in note_ids if n in notes)
+        items[key] = {'label': decode_label(marker['id']) + (f' {suffix}' if suffix else ''), 'text': text,
+                      'note': note, 'images': tuple((img.get('src', ''), img.get('alt', '')) for img in el.select('img'))}
+    # A függelékek elemei RR-azonosítót kapnak, és a szövegük a .szelet elemben van.
+    appendix_by_rr = {}
+    active_appendix = ''
+    for marker in soup.select('#orig span.jhId'):
+        if marker.get('id') in ('FU1', 'FU2'):
+            active_appendix = marker['id']
+        elif re.fullmatch(r'RR\d+', marker.get('id', '')):
+            appendix_by_rr[marker['id']] = active_appendix or 'FU?'
+    for el in soup.select('#orig div.szelet'):
+        marker = el.find_previous_sibling('span', class_='jhId')
+        if not marker or not re.fullmatch(r'RR\d+', marker.get('id', '')):
+            continue
+        p = el.find('p') or el
+        visible = p.select_one('.jel') or p.find('i')
+        suffix = text_without_footnote_sup(visible) if visible else ''
+        text = text_without_footnote_sup(p)
+        app = appendix_by_rr.get(marker['id'], 'FU?')
+        stable_part = re.sub(r'\W+', '', (suffix or text[:100]).lower())
+        key = app + '@' + stable_part
+        if key in items:
+            continue
+        note_ids = [s.get('data-note-id') for s in p.select('sup[data-note-id]')]
+        note = ' | '.join(notes.get(n, '') for n in note_ids if n in notes)
+        app_name = '1. számú függelék' if app == 'FU1' else '2. számú függelék' if app == 'FU2' else 'függelék'
+        items[key] = {'label': f'{app_name} / {suffix or stable_part[:36]}', 'text': text,
+                      'note': note, 'images': tuple((img.get('src', ''), img.get('alt', '')) for img in el.select('img'))}
+    # Egyes többszintű pontok ugyanazon bekezdésen belül külön <p>-ként szerepelnek.
+    for el in soup.select('#orig div.bekezdesNyito, #orig div.betusPontNyito, #orig div.ketbetusAlPont, #orig div.szelet'):
+        marker = el.find_previous_sibling('span', class_='jhId')
+        if not marker or not re.match(r'SZ\d+[A-Z]?(?:@BE|$)', marker.get('id', '')):
+            continue
+        for p in el.select('p')[1:]:
+            text = text_without_footnote_sup(p)
+            if not text:
+                continue
+            visible = p.select_one('.jel') or p.find('i')
+            suffix = text_without_footnote_sup(visible) if visible else ''
+            if not suffix:
+                m = re.match(r'\s*([a-z]{1,2}(?:/\d+)?[).])', text, re.I)
+                suffix = m.group(1) if m else ''
+            if not suffix:
+                continue
+            key = marker['id'] + '@SL' + re.sub(r'\W+', '', suffix.lower())
+            note_ids = [s.get('data-note-id') for s in p.select('sup[data-note-id]')]
+            note = ' | '.join(notes.get(n, '') for n in note_ids if n in notes)
+            items[key] = {'label': decode_label(marker['id']) + f' {suffix}', 'text': text,
+                          'note': note, 'images': tuple((img.get('src', ''), img.get('alt', '')) for img in p.select('img'))}
     # Az alkategóriák lábjegyzetét gyakran a teljes szülőbekezdés hordozza.
     for key, item in items.items():
         if item['note']:
@@ -156,9 +224,10 @@ def main():
             a, b = old.get(key), new.get(key)
             if a and b and equivalent_text(key, a['text'], b['text']) and a['images'] == b['images']:
                 continue
-            kind = 'új' if a is None else 'hatályon kívül helyezett' if b is None else 'módosított'
+            repealed_marker = bool(a and b and re.fullmatch(r'\(\d+[a-z]?\)', b['text'].strip(), re.I) and len(a['text']) > 30)
+            kind = 'új' if a is None else 'hatályon kívül helyezett' if b is None or repealed_marker else 'módosított'
             old_text = a['text'] if a else ''
-            new_text = b['text'] if b else ''
+            new_text = '' if repealed_marker else b['text'] if b else ''
             if a and b and a['images'] != b['images']:
                 old_text += f" [Ábrák előtte: {len(a['images'])}]"
                 new_text += f" [Ábrák utána: {len(b['images'])}]"
@@ -178,10 +247,10 @@ def main():
         all_rows.extend(rows)
         print(f'{after-1}->{after}: {len(rows)} rendelkezés')
     with OUT.open('w', encoding='utf-8-sig', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader(); w.writerows(all_rows)
+        w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator='\n'); w.writeheader(); w.writerows(all_rows)
     probe = compare(16, 17)
     with PROBE_OUT.open('w', encoding='utf-8-sig', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader(); w.writerows(probe)
+        w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator='\n'); w.writeheader(); w.writerows(probe)
     print(f'Összes változott rendelkezés: {len(all_rows)}')
 
 

@@ -64,3 +64,9 @@
 - Elkészült a `data/processed/kresz_valtozasok.csv` (61 sor: 32 új, 29 módosított; 0 hatályon kívül helyezett; 0 ábraváltozás; nincs lábjegyzet alapján azonosíthatatlan jogszabály). A 2026-os állapotkezdések a verziólistában vizsgálati időszakon kívüliként vannak jelölve.
 - Négy kontrollmintát ellenőriztem a módosító jogszabályok időállapot szerinti saját szövegével; mindegyikben egyeztek az azonosított KRESZ-rendelkezések. A kért hatályon kívül helyezési mintához nem volt valódi átmenet, ezért a korábban törlésnek látszott 2017-es §-cserét kontrolláltam, és módosítottként osztályoztam.
 - Elkészült a `docs/kresz_valtozasok_osszegzes.md`; frissült a `docs/forrasok_kresz.md`. A verziólisták, minta-jogszabályoldalak és módosítórendelet-időállapotok gyorsítótárazva vannak. Tömeges módosítórendelet-letöltés nem történt.
+
+## 2026-10-12 — KRESZ-teljeségi ellenőrzés
+
+- A `scripts/03_kresz_valtozasok.py` most a NJT szeletként tárolt rendelkezéseit, a bekezdésen belüli alpontokat, valamint az 1. és 2. számú függelék szöveges elemeit is feldolgozza; a 41. § (9) puszta jelölésre redukálódását hatályvesztésként jelöli.
+- Újrafuttatás után a `data/processed/kresz_valtozasok.csv` 95 sort tartalmaz (51 új, 40 módosított, 4 hatályon kívül helyezett), amelyekből 9 függeléki tétel. Az ellenőrző szkript 23/23 teljes dokumentum-összevetést és 62/62 releváns lábjegyzet-célrendelkezést fedettnek talált; a négy nagyobb HTML-diff szegmens több külön CSV-sort fogott össze, ezek megfeleltetését az összesítő rögzíti.
+- Változott: `scripts/03_kresz_valtozasok.py`, `scripts/04_kresz_teljessegellenorzes.py`, `data/processed/kresz_valtozasok.csv`, `data/processed/kresz_valtozasok_proba.csv`, `data/processed/kresz_idoallapotok.csv`, `docs/kresz_valtozasok_osszegzes.md`, `docs/valtozasnaplo.md`. Bizonytalan maradékot nem találtam.
