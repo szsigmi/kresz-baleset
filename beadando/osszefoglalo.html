@@ -1,0 +1,25 @@
+<!doctype html><html lang="hu"><head><meta charset="utf-8"><title>Kutatási összefoglaló</title>
+<style>
+@page { size: A4; margin: 12mm 14mm; }
+* { box-sizing: border-box; }
+body { margin: 0; color: #202B33; font: 9.2pt/1.32 Arial, sans-serif; }
+h1 { margin: 0 0 3mm; color: #102E3A; font-size: 18pt; line-height: 1.12; }
+.deck { color: #52636B; margin: 0 0 4mm; font-size: 9pt; }
+section { margin: 0 0 3mm; break-inside: avoid; }
+h2 { margin: 0 0 1mm; font-size: 11pt; color: #007F86; border-bottom: 0.5pt solid #C7D7D8; padding-bottom: .7mm; }
+p { margin: 0 0 1.3mm; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.figure { margin: 1mm 0 3mm; break-inside: avoid; }
+.figure img { display: block; width: 100%; height: 54mm; object-fit: contain; }
+.small { color: #506068; font-size: 7.7pt; }
+.stat { background: #EAF3F2; border-left: 2.5mm solid #007F86; padding: 2mm 3mm; margin: 1.5mm 0; }
+.foot { margin-top: 2mm; padding-top: 1.5mm; border-top: .5pt solid #C7D1D5; font-size: 7.1pt; color: #58666C; }
+</style></head><body>
+<h1>Kerékpáros ittas okozás és a KRESZ 2014-es módosítása</h1>
+<p class="deck">Előzetes, éves összehasonlítás — Magyarország, 2001–2023</p>
+<section><h2>Kutatási kérdés</h2><p>Hogyan változott az ittasan okozott balesetek aránya a kerékpárosok által okozott személysérüléses balesetekben a kerékpárosok alkoholszabályát enyhítő 2014-es KRESZ-módosítás után, a személygépkocsi-vezetőkhöz képest?</p><p class="small">A 172/2014. (VII. 18.) Korm. rendelet 4. § (4) bekezdése 2014. július 19-től eltörölte a főútvonalon kerékpározók kivételét az alkoholkorlátozás alól.</p></section>
+<section><h2>Empirikus anyag</h2><p>A KSH STADAT 4.1.1.50 és 4.1.1.52 éves táblái alapján 2001–2023-ra, kerékpárra és személygépkocsira számoltunk ittas baleseti arányt: ittas okozású balesetek / az adott járműtípus által okozott összes személysérüléses baleset. Ez 23 év és 46 év–járműtípus megfigyelés. A 2014-es átmeneti évet jelöltük; a 2020–2021-es COVID-éveket külön flageltük.</p></section>
+<div class="figure"><img src="file:///Users/macbook/kresz-baleset/output/kerekpar_ittas_arany.png" alt="Ittas balesetek aránya kerékpár és személygépkocsi szerint, 2001–2023"></div>
+<section><h2>Módszertan</h2><div class="cols"><div><p>Leíró különbségek különbsége: a 2015–2023 és a 2001–2013 közötti átlagos arányváltozás kerékpárosoknál, mínusz ugyanez személygépkocsinál. A 2014-es átmeneti év egyik átlagba sem került.</p><div class="stat"><b>Egyszerű DiD: -2.808 százalékpont</b><br><span class="small">Kerékpár: 23.24% → 17.43%; személygépkocsi: 10.83% → 7.83%.</span></div></div><div><p><b>Korlátok.</b> Csak a főútvonali kivétel szűnt meg, miközben a KSH-adat nem bont úttípus szerint. Évente egy adatpont áll rendelkezésre; a COVID-évek kilógnak (kerekpar: 18.1% (2020), 17.6% (2021), szemelygepkocsi: 8.9% (2020), 8.2% (2021)). A 2024-től megváltozott kerékpáros ittasságvizsgálat miatt 2024–2025 kimaradt.</p><p>Az egyszerű DiD nem szűri ki az egyidejű változásokat, és a személygépkocsi-csoport sem biztosan érintetlen kontroll. Az eredmény leíró összehasonlítás, nem okozati bizonyíték.</p></div></div></section>
+<p class="foot">Forrás: KSH STADAT 4.1.1.50 és 4.1.1.52, letöltve 2026-10-16. Feldolgozás: `scripts/05_kerekpar_ittas_elemzes.py`. A számítás súlyozatlan éves átlagarányokat használ.</p>
+</body></html>

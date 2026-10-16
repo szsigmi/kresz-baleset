@@ -79,3 +79,10 @@
 - A 2014-07-19-i KRESZ 4. § (4) módosítás régi/új szövegét és a 172/2014. (VII. 18.) Korm. rendeletet ellenőriztem a helyi változás-CSV-ben.
 - A KSH STADATból letöltöttem a 4.1.1.50, 4.1.1.52, 4.2.1.4 és 4.2.1.6 táblák változatlan XLSX-exportját a `data/raw/` alá; az éves járműtípus és ittas járműtípus sorok 2001–2025-ig, a havi táblák 2022-től adnak bontást. Letöltöttem a rendőrség 2025. I–II. havi jelentését is.
 - A `docs/forrasok.md` kiegészült az URL-ekkel, időszakokkal, gyakorisággal és a 2024-es ittas kerékpáros adatfelvételi törésre vonatkozó megjegyzéssel. Bizonytalan maradék: a rendőrségi jelentésekben a járműtípus szerinti okozói bontás mellett nem találtam ittas okozó × járműtípus kereszttáblát; a KSH éves STADAT-táblája viszont tartalmazza.
+## 2026-10-16 — Kerékpáros ittas baleseti elemzés és leadandók
+
+- Elkészült a `scripts/05_kerekpar_ittas_elemzes.py`; a KSH STADAT 4.1.1.50 és 4.1.1.52 változatlan forrásfájljaiból előállítja a `data/processed/kerekpar_ittas_eves.csv` fájlt és a `output/kerekpar_ittas_arany.png` ábrát.
+- 46 év–okozótípus sor készült 2001–2023-ra. A CSV 92 balesetszám-celláját visszaellenőriztem a forrás-munkafüzetekkel; nem volt eltérés. Az egyszerű átlagarányos különbségek különbsége: −2,808 százalékpont.
+- Elkészült az `beadando/kresz-baleset_adatcsomag_20261016_v1.zip` CSV-vel, ábrával, README-vel, kódkönyvvel és GenAI-módszertani leírással; továbbá az egyoldalas `beadando/osszefoglalo.pdf` és a Chrome által használt HTML-forrás.
+- A PDF Chrome headless-szel készült; a `mdls` eredménye `kMDItemNumberOfPages = 1`, a PDF-et megnyitottam. Korlátok: csak a főútvonali kivétel szűnt meg, az adatok nem bontanak úttípus szerint, az éves pontok száma kevés, a COVID-évek kilógnak, és az eredmény nem okozati bizonyíték.
+- Változott: `scripts/05_kerekpar_ittas_elemzes.py`, `data/processed/kerekpar_ittas_eves.csv`, `output/kerekpar_ittas_arany.png`, `beadando/`, `docs/valtozasnaplo.md`.
