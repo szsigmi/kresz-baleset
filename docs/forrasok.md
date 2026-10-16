@@ -1,10 +1,10 @@
 # Forrásfeltárás: személysérüléses közúti balesetek (vizsgálati időszak: 2011–2025)
 
-**Feltárás dátuma:** 2026-10-12. Az alábbi oldalakat ezen a napon ténylegesen megnyitottam. Adatfájlt nem töltöttem le; a dátum ezért webes ellenőrzési, nem letöltési dátum.
+**Feltárás dátuma:** 2026-10-12; kiegészítő KSH- és rendőrségi táblafeltárás, letöltés: 2026-10-16. Az első feltáráskor adatfájlt nem töltöttem le; a jelen kiegészítésben megjelölt XLSX- és PDF-fájlok változatlanul a `data/raw/` mappába kerültek.
 
 ## KSH STADAT – havi táblák
 
-A jelenlegi táblalapok HTML-nézetet adnak, és `.XLSX`, illetve `.CSV` exportot kínálnak. Az exportokra nem kattintottam, így az adatfájlok letöltése nem történt meg.
+A jelenlegi táblalapok HTML-nézetet adnak, és `.XLSX`, illetve `.CSV` exportot kínálnak. A korábbi forrásfeltáráskor nem töltöttem le az exportokat; a 2026-10-16-i kiegészítő keresésben a releváns okozó- és ittas okozó-bontású STADAT-fájlokat a lent felsorolt nyers XLSX-változatokban mentettem.
 
 | Tábla és URL | Formátum | Mutatók | Időbontás és lefedett idő | Előzetesség / megjegyzés |
 |---|---|---|---|---|
@@ -29,6 +29,17 @@ A mai STADAT lapok HTML-ben nézhetők meg és XLSX/CSV exportot kínálnak. A v
 | [4.1.1.50. … az okozók szerint](https://www.ksh.hu/stadat_files/ege/hu/ege0064.html) | HTML; exportként XLSX, CSV | Járművezetői/járműtípus és más okozói csoportok; összesen | Éves, 2001–2025 | 2024-től új, részletesebb kategóriák jelennek meg. |
 | [4.1.1.52. Ittasan okozott személysérüléses közúti közlekedési balesetek](https://www.ksh.hu/stadat_files/ege/hu/ege0066.html) | HTML; exportként XLSX, CSV | Ittas okozó szerinti bontás és összesen | Éves, 2001–2025 | A tábla jelzi: 2024-től a rendőrség nem minden esetben vizsgálja a kerékpárosok ittasságát; a kerékpáros sor összehasonlíthatósága korlátozott. |
 | [4.1.1.53. … a baleseti helyszín szerint](https://www.ksh.hu/stadat_files/ege/hu/ege0067.html) | HTML; exportként XLSX, CSV | Autópálya (M1, M3, M5, M6, M7), M0 autóút, egyéb út; lakott területen belüli/kívüli bontás; összesen | Éves, 2004–2025 | A kért helyszínmutatók megvannak évesen, de a tábla nem ad havi bontást. |
+
+### A 2014-07-19-i kerékpáros alkoholkorlátozás vizsgálatához letöltött táblák
+
+| Tábla és pontos export-URL | Helyi változatlan fájl | Bontás; időszak; gyakoriság | Letöltés / megjegyzés |
+|---|---|---|---|
+| [4.1.1.50. Okozók szerint](https://www.ksh.hu/stadat_files/ege/hu/ege0064.xlsx) ([táblalap](https://www.ksh.hu/stadat_files/ege/hu/ege0064.html)) | `data/raw/KSH_STADAT_ege0064_okozo_eves.xlsx` | Okozó járműtípusa, többek között személygépkocsi és kerékpár; 2001–2025; éves | 2026-10-16. 2024-től az elektromos rásegítésű kerékpár és a motoros roller külön kategória; visszamenőleg „..” szerepel. |
+| [4.1.1.52. Ittasan okozott balesetek](https://www.ksh.hu/stadat_files/ege/hu/ege0066.xlsx) ([táblalap](https://www.ksh.hu/stadat_files/ege/hu/ege0066.html)) | `data/raw/KSH_STADAT_ege0066_ittas_okozo_eves.xlsx` | Ittas okozás × okozó/járműtípus, többek között személygépkocsi és kerékpár; 2001–2025; éves | 2026-10-16. A 2014-es jelölt közvetlen kimenetéhez ez a leghasznosabb tábla. A lábjegyzet szerint 2024-től a rendőrség nem minden esetben vizsgálja a kerékpárosok ittasságát, ezért a kerékpáros sorban mérési törés van. |
+| [4.2.1.4. Okozók szerint, havonta](https://www.ksh.hu/stadat_files/ege/hu/ege0074.xlsx) ([táblalap](https://www.ksh.hu/stadat_files/ege/hu/ege0074.html)) | `data/raw/KSH_STADAT_ege0074_okozo_havi.xlsx` | Okozó járműtípusa, köztük személygépkocsi és kerékpár; 2022. januártól 2026. júniusig; havi | 2026-10-16. A 2014-es hatás vizsgálatához ez önmagában későn indul; a 2026-os sorok részlegesek. |
+| [4.2.1.6. Ittasan okozott balesetek, havonta](https://www.ksh.hu/stadat_files/ege/hu/ege0076.xlsx) ([táblalap](https://www.ksh.hu/stadat_files/ege/hu/ege0076.html)) | `data/raw/KSH_STADAT_ege0076_ittas_okozo_havi.xlsx` | Ittas okozás × okozó/járműtípus, köztük személygépkocsi és kerékpár; 2022. januártól 2026. júniusig; havi | 2026-10-16. 2014 körüli havi összevetést nem tesz lehetővé; 2024-től a kerékpáros ittasság mérésében törés van. |
+
+Pontosítás: **a Statinfo JA2A01 exportban** nem volt elérhető okozótípus szerinti ittas kereszttábla, de a STADAT 4.1.1.52 éves táblájában ez a bontás megvan; az adatfájlt most letöltöttem. Így az ittas kerékpáros balesetek éves száma a szabályváltozás előtti és utáni évekre vizsgálható, de 2014 körüli havi járműtípus-bontás nem érhető el a megnyitott KSH-táblákban. A 2014-es év július 19-én váltott szabályt, ezért éves összevetésben átmeneti évként kell kezelni; a 2024-es rendőrségi vizsgálati változás külön törés.
 
 ## KSH Tájékoztatási adatbázis
 
@@ -74,6 +85,7 @@ A KSH [2005-ös Területi statisztikai évkönyvének táblajegyzéke](https://w
 | Forrás és URL | Formátum | Mutatók | Időbontás és lefedettség | Előzetesség / megjegyzés |
 |---|---|---|---|---|
 | [Rendőrség: „Közlekedési helyzetkép”, 2014](https://www.police.hu/hu/hirek-es-informaciok/legfrissebb-hireink/kozlekedesrendeszet/kozlekedesi-helyzetkep-2) | HTML hír | A megnyitott oldal évközi összesített személyi sérüléses balesetekről, halálos áldozatokról és ittas okozásról szól | 2014 első hét hónapja (I–VII. havi, kumulált időszak) | Rendőrségi gyors, előzetes tájékoztatás; nem hónaponkénti adat és nem azonos a KSH 30 napos véglegesített definíciójával. |
+| [Rendőrség: 2025. I–II. havi közlekedési statisztikai kimutatás](https://www.police.hu/sites/default/files/Kozlekedes%20Sk%202025_02.pdf) | PDF | Személysérüléses balesetek okozó járműtípus szerint; külön ittas okozás országos/területi összesen és területi arány | Kumulált I–II. havi adatok, összehasonlító év/év eleji értékekkel (2010 I–II., 2019–2025 I–II.); nem teljes havi idősor | Letöltve 2026-10-16: `data/raw/Rendorseg_Kozlekedes_2025_02.pdf`. Nincs ittas okozás × okozó járműtípus kereszttábla; megjegyzése szerint 2024-től az ittas mutató gyalogos és kerékpáros okozó nélkül számolódik. |
 | [Rendőrség: 2025. évi havi statisztikai kimutatás, „vizsgált baleseti ügyek”](https://www.police.hu/sites/default/files/Igazgatasrendeszet%20Sk%202025_12.pdf) | PDF | Rendőri szabálysértési hatóságok által vizsgált baleseti ügyek, területi összesítések | Éves kumulált I–XII. havi kimutatás, 2025; előző évek összehasonlító adatai | Közigazgatási ügyadat, nem személysérüléses baleseti eseményszám; a célmutatóhoz nem helyettesítő forrás. |
 | [Rendőrségi közlekedésrendészet témaköre](https://www.police.hu/hu/a-rendorsegrol/testulet/rendeszeti-szakterulet/kozlekedesrendeszet) | HTML | A témakör leírása, hírekre mutató navigáció; egységes havi statisztikai táblát nem találtam | A 2011–2025-ös vizsgálati időszakhoz nem állapítható meg egységes idősor | A keresés nem talált olyan rendőrségi havi nyilvános táblát, amely a KSH definíciói szerinti országos összes/halálos/súlyos/könnyű baleseteket következetesen közölné. Ezért csak dokumentált előzetes ellenőrzésre vagy hiányzó időszak felkutatására tartalék. |
 
@@ -85,13 +97,13 @@ A KSH [2005-ös Területi statisztikai évkönyvének táblajegyzéke](https://w
 4. **Ittas kerékpározás:** az éves KSH-tábla megjegyzése szerint 2024-től a rendőrség nem minden esetben vizsgálja a kerékpárosok ittasságát. Az ittas okozás sorainál ez külön törésforrás.
 5. **PDF-sorozat teljessége:** megnyitottam konkrét 2006, 2009, 2010, 2015 és 2016 PDF-eket. A 2005–2015 közötti minden éves kötet közvetlen URL-jét nem ellenőriztem; a teljes sorozat hiánytalan elérhetőségét nem állítom.
 6. **Tájékoztatási adatbázis:** a témakörválasztó oldal és a KSH témaköri belépő megnyílt, az egyedi adatköri linkek viszont böngészőhibát adtak. Az adatbázis lehetséges alternatív, de a jelen feltárásban nem igazolt forrás.
-7. **Letöltési szabály:** a jelen forrásfeltárásban nem töltöttem le adatfájlt. Ha a tervet jóváhagyjuk, a nyers fájlok letöltése a `data/raw/` alá, változatlanul történjen, a letöltés dátumának rögzítésével; weboldal-gyorsítótár a `data/raw/cache/` alatt készüljön.
+7. **Letöltési szabály:** a 2026-10-16-i kiegészítő feltárás során öt változatlan exportot mentettem a `data/raw/` alá (négy KSH XLSX és egy rendőrségi PDF); URL-jük és letöltési dátumuk a fenti táblákban van. További lekérésnél a nyers fájlokat változatlanul kell menteni, a letöltés dátumával; weboldal-gyorsítótár a `data/raw/cache/` alatt készüljön.
 
 ## Javasolt letöltési terv
 
 1. **Fő havi kimenet – balesetek száma összesen, halálos/súlyos/könnyű bontásban:** a 2011–2025-ös fő idősorhoz a kézi JA2A01 Statinfo-export kimenetel dimenzióját használjuk; ennek három kimeneteli kategóriája havonta ellenőrizendő a Mindösszesennel. A két helyi STADAT-export csak az átfedő hónapokra kontrollforrás.
 2. **2021:** tartsuk hézagként mindaddig, amíg nem találunk megnyitott, pontos KSH-forrást egyedi havi értékekkel. A negyedéves közzétételekből ne osszuk vissza hónapokra. Kérdezzük meg a KSH-t vagy ellenőrizzük a 2021-es éves kiadványok tábláit, mielőtt bármilyen pótlásról döntenénk.
-3. **Ittasan okozott balesetek, okozó és előidéző ok:** a JA2A01 ittas összes export havi mutatóját használjuk. Okozó szerinti ittas bontás a Statinfo felületén nem volt elérhető. 2024-től ittas kerékpározási kategória miatt külön módszertani jelző szükséges.
+3. **Ittasan okozott balesetek, okozó szerint:** a Statinfo JA2A01 ittas összes exportja havi összes mutatót ad; a KSH STADAT 4.1.1.52 (`ege0066`) éves táblája járműtípus szerinti bontást tartalmaz 2001–2025-re. A 4.2.1.6 (`ege0076`) havi ittas × járműtípus tábla 2022-től érhető el. A 2024-től megváltozott kerékpáros ittasságvizsgálatot törésként kell kezelni.
 4. **Helyszín: lakott területen belül/kívül, autópálya:** a KSH 4.1.1.53-as éves tábláját használjuk, 2004–2025. Havi bontás nincs megerősítve; havi helyszínmutatónál maradjon hiányzó érték.
 5. **Minőségellenőrzés:** az éves KSH STADAT 4.1.1.48 táblával hasonlítsuk össze a havi összeseket azokban az években, ahol 12 havi adat rendelkezésre áll. A havi előzetes és az éves végleges eltéréseket őrizzük meg és dokumentáljuk, ne írjuk felül észrevétlenül.
 6. **Rendőrségi adat:** csak résidőszak ellenőrzésére használjuk, ha pontos időszakra vonatkozó, országos, eseményalapú és definíciója dokumentált táblát találunk. A jelenleg feltárt rendőrségi kumulált és szabálysértési mutatók nem pótolják a KSH-s havi eseményszámot.
