@@ -70,3 +70,7 @@
 - A `scripts/03_kresz_valtozasok.py` most a NJT szeletként tárolt rendelkezéseit, a bekezdésen belüli alpontokat, valamint az 1. és 2. számú függelék szöveges elemeit is feldolgozza; a 41. § (9) puszta jelölésre redukálódását hatályvesztésként jelöli.
 - Újrafuttatás után a `data/processed/kresz_valtozasok.csv` 95 sort tartalmaz (51 új, 40 módosított, 4 hatályon kívül helyezett), amelyekből 9 függeléki tétel. Az ellenőrző szkript 23/23 teljes dokumentum-összevetést és 62/62 releváns lábjegyzet-célrendelkezést fedettnek talált; a négy nagyobb HTML-diff szegmens több külön CSV-sort fogott össze, ezek megfeleltetését az összesítő rögzíti.
 - Változott: `scripts/03_kresz_valtozasok.py`, `scripts/04_kresz_teljessegellenorzes.py`, `data/processed/kresz_valtozasok.csv`, `data/processed/kresz_valtozasok_proba.csv`, `data/processed/kresz_idoallapotok.csv`, `docs/kresz_valtozasok_osszegzes.md`, `docs/valtozasnaplo.md`. Bizonytalan maradékot nem találtam.
+## 2026-10-16 — Projektállapot dokumentálása
+
+- Elkészült az `ALLAPOT.md`, amely összefoglalja az elkészült adatbázist és KRESZ-változásfeldolgozást, a fontos fájlok helyét, a dokumentált korlátokat és a következő elemzési lépést.
+- Változott: `ALLAPOT.md`, `docs/valtozasnaplo.md`. Bizonytalan maradékot az eddigi teljességi ellenőrzés nem talált; az elemzési terv és a hatásvizsgálat még hátravan.
