@@ -1,25 +1,27 @@
 <!doctype html><html lang="hu"><head><meta charset="utf-8"><title>Kutatási összefoglaló</title>
 <style>
-@page { size: A4; margin: 12mm 14mm; }
+@page { size: A4; margin: 9mm 11mm; }
 * { box-sizing: border-box; }
-body { margin: 0; color: #202B33; font: 9.2pt/1.32 Arial, sans-serif; }
-h1 { margin: 0 0 3mm; color: #102E3A; font-size: 18pt; line-height: 1.12; }
-.deck { color: #52636B; margin: 0 0 4mm; font-size: 9pt; }
-section { margin: 0 0 3mm; break-inside: avoid; }
-h2 { margin: 0 0 1mm; font-size: 11pt; color: #007F86; border-bottom: 0.5pt solid #C7D7D8; padding-bottom: .7mm; }
-p { margin: 0 0 1.3mm; }
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
-.figure { margin: 1mm 0 3mm; break-inside: avoid; }
-.figure img { display: block; width: 100%; height: 54mm; object-fit: contain; }
-.small { color: #506068; font-size: 7.7pt; }
-.stat { background: #EAF3F2; border-left: 2.5mm solid #007F86; padding: 2mm 3mm; margin: 1.5mm 0; }
-.foot { margin-top: 2mm; padding-top: 1.5mm; border-top: .5pt solid #C7D1D5; font-size: 7.1pt; color: #58666C; }
+body { margin: 0; color: #202B33; font: 9pt/1.18 Arial, sans-serif; }
+h1 { margin: 0 0 1.5mm; color: #102E3A; font-size: 15pt; line-height: 1.08; }
+.deck { color: #52636B; margin: 0 0 2mm; font-size: 9pt; }
+section { margin: 0 0 1.5mm; break-inside: avoid; }
+h2 { margin: 0 0 .6mm; font-size: 10pt; color: #007F86; border-bottom: 0.5pt solid #C7D7D8; padding-bottom: .4mm; }
+p { margin: 0 0 .7mm; }
+.steps { margin: 0; padding-left: 5mm; } .steps li { margin: 0 0 .35mm; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.figure { margin: .3mm 0 1.3mm; break-inside: avoid; }
+.figure img { display: block; width: 100%; height: 34mm; object-fit: contain; }
+.small { color: #506068; font-size: 9pt; }
+.stat { background: #EAF3F2; border-left: 2mm solid #007F86; padding: 1mm 2mm; margin: .8mm 0; }
+.foot { margin-top: .8mm; padding-top: .6mm; border-top: .5pt solid #C7D1D5; font-size: 9pt; color: #58666C; }
 </style></head><body>
 <h1>Kerékpáros ittas okozás és a KRESZ 2014-es módosítása</h1>
 <p class="deck">Előzetes, éves összehasonlítás — Magyarország, 2001–2023</p>
-<section><h2>Kutatási kérdés</h2><p>Hogyan változott az ittasan okozott balesetek aránya a kerékpárosok által okozott személysérüléses balesetekben a kerékpárosok alkoholszabályát enyhítő 2014-es KRESZ-módosítás után, a személygépkocsi-vezetőkhöz képest?</p><p class="small">A 172/2014. (VII. 18.) Korm. rendelet 4. § (4) bekezdése 2014. július 19-től eltörölte a főútvonalon kerékpározók kivételét az alkoholkorlátozás alól.</p></section>
-<section><h2>Empirikus anyag</h2><p>A KSH STADAT 4.1.1.50 és 4.1.1.52 éves táblái alapján 2001–2023-ra, kerékpárra és személygépkocsira számoltunk ittas baleseti arányt: ittas okozású balesetek / az adott járműtípus által okozott összes személysérüléses baleset. Ez 23 év és 46 év–járműtípus megfigyelés. A 2014-es átmeneti évet jelöltük; a 2020–2021-es COVID-éveket külön flageltük.</p></section>
+<section><h2>Kutatási kérdés</h2><p>Hogyan változott az ittasan okozott balesetek aránya a kerékpárosok által okozott személysérüléses balesetekben a 2014-es KRESZ-módosítás után, a személygépkocsi-vezetőkhöz képest?</p><p class="small">A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól (a befolyásoltság továbbra is tilos maradt).</p></section>
+<section><h2>Empirikus anyag</h2><p>A KSH STADAT 4.1.1.50 és 4.1.1.52 éves táblái alapján 2001–2023-ra, kerékpárra és személygépkocsira számoltunk ittas baleseti arányt: ittas okozású balesetek / az adott járműtípus által okozott összes személysérüléses baleset. Ez 23 év és 46 év–járműtípus megfigyelés. 2014 átmeneti év; a COVID-éveket külön jelöltük.</p></section>
 <div class="figure"><img src="file:///Users/macbook/kresz-baleset/output/kerekpar_ittas_arany.png" alt="Ittas balesetek aránya kerékpár és személygépkocsi szerint, 2001–2023"></div>
-<section><h2>Módszertan</h2><div class="cols"><div><p>Leíró különbségek különbsége: a 2015–2023 és a 2001–2013 közötti átlagos arányváltozás kerékpárosoknál, mínusz ugyanez személygépkocsinál. A 2014-es átmeneti év egyik átlagba sem került.</p><div class="stat"><b>Egyszerű DiD: -2.808 százalékpont</b><br><span class="small">Kerékpár: 23.24% → 17.43%; személygépkocsi: 10.83% → 7.83%.</span></div></div><div><p><b>Korlátok.</b> Csak a főútvonali kivétel szűnt meg, miközben a KSH-adat nem bont úttípus szerint. Évente egy adatpont áll rendelkezésre; a COVID-évek kilógnak (kerekpar: 18.1% (2020), 17.6% (2021), szemelygepkocsi: 8.9% (2020), 8.2% (2021)). A 2024-től megváltozott kerékpáros ittasságvizsgálat miatt 2024–2025 kimaradt.</p><p>Az egyszerű DiD nem szűri ki az egyidejű változásokat, és a személygépkocsi-csoport sem biztosan érintetlen kontroll. Az eredmény leíró összehasonlítás, nem okozati bizonyíték.</p></div></div></section>
-<p class="foot">Forrás: KSH STADAT 4.1.1.50 és 4.1.1.52, letöltve 2026-10-16. Feldolgozás: `scripts/05_kerekpar_ittas_elemzes.py`. A számítás súlyozatlan éves átlagarányokat használ.</p>
+<section><h2>Az adatbázis létrehozása</h2><ol class="steps"><li>NJT: KRESZ-időállapotok 2010–2025; 23 összevethető váltás szövegdiffje.</li><li>kresz_valtozasok.csv: 95 változás (4 hatályvesztés, 9 függeléksor); teljességi audit 62 releváns lábjegyzettel.</li><li>Statinfo havi baleseti idősor 2011–2025 (180 hónap); havi és STADAT-validálás.</li><li>A 95 módosítás szűrése mérhetőség és elkülönülés szerint; kiválasztva a 2014-es 4. § (4).</li><li>KSH STADAT 4.1.1.50 és 4.1.1.52 letöltése; 2024–2025 kizárása a módszertani törés miatt.</li><li>kerekpar_ittas_eves.csv: 46 sor, 92 forráscella-összevetés, automatikus ellenőrzés; scripts/05_kerekpar_ittas_elemzes.py.</li><li>Codex CLI genAI-ügynök, Python virtuális környezet, Git-verziókezelés privát GitHub-tárolóval és változásnapló.</li></ol><p>A genAI a források feldolgozását és dokumentálását segítette; a jogi változásokat forrásszöveggel, az adatokat programozott összevetéssel ellenőriztük.</p></section>
+<section><h2>Módszertan</h2><div class="cols"><div><p>Leíró DiD: a 2015–2023 és a 2001–2013 közötti éves átlagarány-változás különbsége; 2014 egyik átlagban sincs. Érzékenység: 2023 nélkül, 2015–2022.</p><div class="stat"><b>DiD 2015–2023: -2.808 százalékpont; 2015–2022: -1.808 százalékpont</b><br><span class="small">2001–2013 → 2015–2022: kerékpár 23.24% → 18.52%; személygépkocsi 10.83% → 7.92%.</span></div></div><div><p><b>Korlátok.</b> Csak a főútvonali kivétel szűnt meg; az adat nem bont úttípus szerint. Évente egy adatpont van. A COVID-éveket külön jelöltük (kerékpár: 18.1% (2020), 17.6% (2021), személygépkocsi: 8.9% (2020), 8.2% (2021)). A 2022–2023-as kerékpáros csökkenés lehetséges adatfelvételi törés. 2024–2025 a módszertani törés miatt kimaradt.</p><p>Az egyszerű DiD nem kontrollálja az egyidejű változásokat; nem okozati bizonyíték.</p></div></div></section>
+<p class="foot">Forrás: KSH STADAT 4.1.1.50 és 4.1.1.52, letöltve 2026-10-16. Feldolgozás: scripts/05_kerekpar_ittas_elemzes.py. Súlyozatlan éves átlagarányok.</p>
 </body></html>

@@ -1,5 +1,14 @@
 # Változásnapló
 
+## 2026-10-16 — Beadandó összefoglaló és adatcsomag bővítése
+
+- A `scripts/05_kerekpar_ittas_elemzes.py` frissítve: az összefoglalóba bekerült az adatbázis létrehozásának hét számozott lépése, a jogszabályi megfogalmazás pontosítása és a 2023 nélküli (2015–2022) DiD-érzékenységi számítás.
+- A PDF és a ZIP dokumentumai külön jelölik a COVID-éveket, a 2022–2023-as kerékpáros aránycsökkenést pedig lehetséges adatfelvételi törésként nevezik meg. A PDF-hez A4-es oldaltördelést állítottam be.
+- A v2 ZIP-be bekerül a `kresz_valtozasok.csv` és a `balesetek_havi.csv`; a kódkönyv mindkét fájl oszlopait dokumentálja.
+- A 46 soros éves elemzési CSV 92 forráscellájának ellenőrzése sikeres. A DiD 2015–2023-ra −2,808, 2023 nélkül (2015–2022) −1,808 százalékpont; a PDF `mdls` ellenőrzése 1 A4-es oldalt jelzett.
+- A v2 ZIP sértetlen; 7 fájlt tartalmaz, mérete 219 137 bájt.
+- Bizonytalanság: a 2022–2023-as csökkenés adatfelvételi okát a dokumentált források nem igazolják.
+
 ## 2026-10-12 — Validáció javítása
 
 - Új szabály került az AGENTS.md-be az összevetett elemszámok és a nem elvégezhető ellenőrzések jelentéséről.

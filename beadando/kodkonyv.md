@@ -12,3 +12,29 @@
 | `covid` | 1 a 2020-as és 2021-es évekre; egyébként 0. |
 
 Egy sor = egy év × okozótípus. A 2024–2025-ös éveket az adat nem tartalmazza.
+
+## `kresz_valtozasok.csv`
+
+| Oszlop | Jelentés |
+|---|---|
+| `verzio_elotte`, `verzio_utana` | NJT-időállapotok sorszáma a változás előtt és után. |
+| `hatalybalepes` | A változás hatálybalépésének dátuma. |
+| `rendelkezes` | Megváltozott KRESZ-rendelkezés azonosítója; a függelékek sorai is szerepelnek. |
+| `valtozas_tipusa` | Új, módosított vagy hatályon kívül helyezett rendelkezés. |
+| `regi_szoveg`, `uj_szoveg` | A két időállapot érintett rendelkezésének szövege. |
+| `modosito_jogszabaly` | A lábjegyzetből azonosított módosító jogszabály, ha rendelkezésre áll. |
+| `modosito_rendelkezes` | A módosító jogszabályra utaló NJT-lábjegyzet szó szerinti szövege. |
+| `forras_url` | Az összehasonlított NJT-időállapotok URL-je. |
+
+## `balesetek_havi.csv`
+
+| Oszlop | Jelentés |
+|---|---|
+| `honap` | Hónap ÉÉÉÉ-HH formában. |
+| `adatkor` | Statinfo-adatkör azonosítója. |
+| `dimenzio`, `kategoria`, `szulo_kategoria` | Dimenzió, kategória és igazolt hierarchikus szülő (hiányzó kapcsolatnál üres). |
+| `ertek` | A forrás szerinti havi érték. |
+| `ures_cella_kezelese` | Az eredeti üres cella kezelésének jelölése. |
+| `forras_fajl`, `forras_oszlop` | Helyi nyers export és munkalaposzlop. |
+| `forras_url` | Statinfo-lekérdezés URL-je. |
+| `letoltes_datuma` | A nyers export letöltési dátuma. |
