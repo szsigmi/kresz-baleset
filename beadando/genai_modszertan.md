@@ -15,7 +15,7 @@
 
 ## Korlátok
 
-- A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól (a befolyásoltság továbbra is tilos maradt). A KSH-adat nem bontja az eseteket úttípus szerint, ezért a ténylegesen érintett esetek nem különíthetők el.
+- A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól; a befolyásoltság továbbra is tilos maradt. A KSH-adat nem bontja az eseteket úttípus szerint, ezért a ténylegesen érintett esetek nem különíthetők el.
 - Évente egy megfigyelés van, a vizsgált idősor rövid (23 év × két okozótípus), és a szabály hatálybalépésének éve átmeneti.
 - A COVID-időszak 2020–2021-es éveit külön jelöltük; az alap DiD ezeket tartalmazza, ezért az átlagok érzékenyek rájuk.
 - A kerékpáros ittas arány 2022 és 2023 között hirtelen csökkent; ez lehetséges adatfelvételi törés, amelyet a rendelkezésre álló forrásokból nem tudtunk igazolni.

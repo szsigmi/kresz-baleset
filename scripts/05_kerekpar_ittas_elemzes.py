@@ -197,7 +197,7 @@ Az érzékenységi számítás 2015–2022-re (2023 nélkül) a következő: ker
 
 Ez leíró, előzetes összehasonlítás, nem okozati hatásbecslés. A 2014-es átmeneti évet kizártuk az előtte/utána átlagokból; a COVID-éveket külön jelöltük. A 2022–2023-as kerékpáros arány hirtelen csökkenése lehetséges adatfelvételi törésre utalhat, de önmagában nem igazolja azt.
 
-A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól (a befolyásoltság továbbra is tilos maradt).
+A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól; a befolyásoltság továbbra is tilos maradt.
 
 ## A ZIP tartalma
 
@@ -270,7 +270,7 @@ Egy sor = egy év × okozótípus. A 2024–2025-ös éveket az adat nem tartalm
 
 ## Korlátok
 
-- A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól (a befolyásoltság továbbra is tilos maradt). A KSH-adat nem bontja az eseteket úttípus szerint, ezért a ténylegesen érintett esetek nem különíthetők el.
+- A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól; a befolyásoltság továbbra is tilos maradt. A KSH-adat nem bontja az eseteket úttípus szerint, ezért a ténylegesen érintett esetek nem különíthetők el.
 - Évente egy megfigyelés van, a vizsgált idősor rövid (23 év × két okozótípus), és a szabály hatálybalépésének éve átmeneti.
 - A COVID-időszak 2020–2021-es éveit külön jelöltük; az alap DiD ezeket tartalmazza, ezért az átlagok érzékenyek rájuk.
 - A kerékpáros ittas arány 2022 és 2023 között hirtelen csökkent; ez lehetséges adatfelvételi törés, amelyet a rendelkezésre álló forrásokból nem tudtunk igazolni.
@@ -310,7 +310,7 @@ p {{ margin: 0 0 .7mm; }}
 </style></head><body>
 <h1>Kerékpáros ittas okozás és a KRESZ 2014-es módosítása</h1>
 <p class="deck">Előzetes, éves összehasonlítás — Magyarország, 2001–2023</p>
-<section><h2>Kutatási kérdés</h2><p>Hogyan változott az ittasan okozott balesetek aránya a kerékpárosok által okozott személysérüléses balesetekben a 2014-es KRESZ-módosítás után, a személygépkocsi-vezetőkhöz képest?</p><p class="small">A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól (a befolyásoltság továbbra is tilos maradt).</p></section>
+<section><h2>Kutatási kérdés</h2><p>Hogyan változott az ittasan okozott balesetek aránya a kerékpárosok által okozott személysérüléses balesetekben a 2014-es KRESZ-módosítás után, a személygépkocsi-vezetőkhöz képest?</p><p class="small">A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól; a befolyásoltság továbbra is tilos maradt.</p></section>
 <section><h2>Empirikus anyag</h2><p>A KSH STADAT 4.1.1.50 és 4.1.1.52 éves táblái alapján 2001–2023-ra, kerékpárra és személygépkocsira számoltunk ittas baleseti arányt: ittas okozású balesetek / az adott járműtípus által okozott összes személysérüléses baleset. Ez 23 év és 46 év–járműtípus megfigyelés. 2014 átmeneti év; a COVID-éveket külön jelöltük.</p></section>
 <div class="figure"><img src="{FIG_PATH.as_uri()}" alt="Ittas balesetek aránya kerékpár és személygépkocsi szerint, 2001–2023"></div>
 <section><h2>Az adatbázis létrehozása</h2><ol class="steps"><li>NJT: KRESZ-időállapotok 2010–2025; 23 összevethető váltás szövegdiffje.</li><li>kresz_valtozasok.csv: 95 változás (4 hatályvesztés, 9 függeléksor); teljességi audit 62 releváns lábjegyzettel.</li><li>Statinfo havi baleseti idősor 2011–2025 (180 hónap); havi és STADAT-validálás.</li><li>A 95 módosítás szűrése mérhetőség és elkülönülés szerint; kiválasztva a 2014-es 4. § (4).</li><li>KSH STADAT 4.1.1.50 és 4.1.1.52 letöltése; 2024–2025 kizárása a módszertani törés miatt.</li><li>kerekpar_ittas_eves.csv: 46 sor, 92 forráscella-összevetés, automatikus ellenőrzés; scripts/05_kerekpar_ittas_elemzes.py.</li><li>Codex CLI genAI-ügynök, Python virtuális környezet, Git-verziókezelés privát GitHub-tárolóval és változásnapló.</li></ol><p>A genAI a források feldolgozását és dokumentálását segítette; a jogi változásokat forrásszöveggel, az adatokat programozott összevetéssel ellenőriztük.</p></section>

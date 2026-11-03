@@ -95,3 +95,11 @@
 - Elkészült az `beadando/kresz-baleset_adatcsomag_20261016_v1.zip` CSV-vel, ábrával, README-vel, kódkönyvvel és GenAI-módszertani leírással; továbbá az egyoldalas `beadando/osszefoglalo.pdf` és a Chrome által használt HTML-forrás.
 - A PDF Chrome headless-szel készült; a `mdls` eredménye `kMDItemNumberOfPages = 1`, a PDF-et megnyitottam. Korlátok: csak a főútvonali kivétel szűnt meg, az adatok nem bontanak úttípus szerint, az éves pontok száma kevés, a COVID-évek kilógnak, és az eredmény nem okozati bizonyíték.
 - Változott: `scripts/05_kerekpar_ittas_elemzes.py`, `data/processed/kerekpar_ittas_eves.csv`, `output/kerekpar_ittas_arany.png`, `beadando/`, `docs/valtozasnaplo.md`.
+
+## 2026-11-03 — végleges adatbázis és validálás
+
+- Létrehoztam a `data/final/` három CSV-jét: 95 KRESZ-változás, 180 havi összes balesetszám, 46 éves okozó × év rekord. A KRESZ-tábla őrzi a régi és az új normaszöveget; mindhárom tábla kapott egyedi első oszlopú azonosítót és forrás URL-t.
+- Hozzáadtam a `scripts/06_validalas.py` szkriptet és a `docs/validacio_jelentes.md` riportot. A havi köztes táblát nyers Statinfo-exportokból, az éves mutatót a két nyers KSH XLSX-ből építi újra.
+- Elkészült a `docs/kodkonyv.md`; a 172/2014. (VII. 18.) Korm. rendelet leírását egységesítettem a README-ben, a módszertani leírásban, a HTML-összefoglalóban és az elemző szkript szövegében.
+- Validálás: 19 ellenőrzés, 0 eltérés; a havi–éves KSH összegellenőrzés nem végezhető el, mert nincs helyi éves összesítő export. A kerékpáros ittas okozás idősorában a 2024-től jelzett adatfelvételi törés és a 2024–2025-ös táblabeli lefedettség hiánya korlát marad.
+- Változott fájlok: `data/final/*.csv`, `docs/kodkonyv.md`, `docs/validacio_jelentes.md`, `scripts/06_validalas.py`, `scripts/05_kerekpar_ittas_elemzes.py`, `beadando/README.md`, `beadando/genai_modszertan.md`, `beadando/osszefoglalo.html`, `docs/valtozasnaplo.md`. Az `AI_NAPLO.md`-hoz nem nyúltam.

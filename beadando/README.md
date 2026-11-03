@@ -19,7 +19,7 @@ Az érzékenységi számítás 2015–2022-re (2023 nélkül) a következő: ker
 
 Ez leíró, előzetes összehasonlítás, nem okozati hatásbecslés. A 2014-es átmeneti évet kizártuk az előtte/utána átlagokból; a COVID-éveket külön jelöltük. A 2022–2023-as kerékpáros arány hirtelen csökkenése lehetséges adatfelvételi törésre utalhat, de önmagában nem igazolja azt.
 
-A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól (a befolyásoltság továbbra is tilos maradt).
+A 172/2014. (VII. 18.) Korm. rendelet 2014. július 19-től a főútvonalakra is kiterjesztette a kerékpárosok felmentését az alkohol jelenlétére vonatkozó tilalom alól; a befolyásoltság továbbra is tilos maradt.
 
 ## A ZIP tartalma
 
