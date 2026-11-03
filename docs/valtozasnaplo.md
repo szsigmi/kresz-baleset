@@ -103,3 +103,10 @@
 - Elkészült a `docs/kodkonyv.md`; a 172/2014. (VII. 18.) Korm. rendelet leírását egységesítettem a README-ben, a módszertani leírásban, a HTML-összefoglalóban és az elemző szkript szövegében.
 - Validálás: 19 ellenőrzés, 0 eltérés; a havi–éves KSH összegellenőrzés nem végezhető el, mert nincs helyi éves összesítő export. A kerékpáros ittas okozás idősorában a 2024-től jelzett adatfelvételi törés és a 2024–2025-ös táblabeli lefedettség hiánya korlát marad.
 - Változott fájlok: `data/final/*.csv`, `docs/kodkonyv.md`, `docs/validacio_jelentes.md`, `scripts/06_validalas.py`, `scripts/05_kerekpar_ittas_elemzes.py`, `beadando/README.md`, `beadando/genai_modszertan.md`, `beadando/osszefoglalo.html`, `docs/valtozasnaplo.md`. Az `AI_NAPLO.md`-hoz nem nyúltam.
+
+## 2026-11-03 — havi végleges tábla bővítése és független egyeztetése
+
+- A `data/final/balesetek_havi.csv` immár 180 soros, 11 oszlopos széles tábla: hét egész havi mutató és forrásmezők. A hét értéket közvetlenül a három nyers JA2A01 XLSX-ből olvassa a `scripts/06_validalas.py`.
+- Kiegészítettem az ellenőrzést a két havi kategóriaazonossággal, a hét mutató havi→éves összegének Statinfo év-soraival való egyeztetésével, valamint a teljes balesetszám KSH 4.1.1.50 `Összesen` oszlopával végzett 2011–2025-ös ellenőrzéssel.
+- Javítottam a kódkönyv havi oszloplistáját, a KRESZ-változások dátumtartományát és a `K2014-07-19_4-4` azonosítópéldát. A jelentésben 23 ellenőrzés futott, eltérés nem volt.
+- Módosult: `data/final/balesetek_havi.csv`, `docs/kodkonyv.md`, `docs/validacio_jelentes.md`, `scripts/06_validalas.py`, `docs/valtozasnaplo.md`. Kétséges pont nem maradt; a PDF még nem készült el.
