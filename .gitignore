@@ -3,3 +3,8 @@
 data/raw/cache/
 __pycache__/
 *.py[cod]
+.env
+*.pem
+*.key
+id_rsa*
+# A data/ szándékosan verziókezelt: nyilvános KSH- és NJT-forrásadat, privát tároló, az adatbázis maga a leadandó. A data/raw/cache/ ki van zárva.

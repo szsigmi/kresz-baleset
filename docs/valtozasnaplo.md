@@ -110,3 +110,10 @@
 - Kiegészítettem az ellenőrzést a két havi kategóriaazonossággal, a hét mutató havi→éves összegének Statinfo év-soraival való egyeztetésével, valamint a teljes balesetszám KSH 4.1.1.50 `Összesen` oszlopával végzett 2011–2025-ös ellenőrzéssel.
 - Javítottam a kódkönyv havi oszloplistáját, a KRESZ-változások dátumtartományát és a `K2014-07-19_4-4` azonosítópéldát. A jelentésben 23 ellenőrzés futott, eltérés nem volt.
 - Módosult: `data/final/balesetek_havi.csv`, `docs/kodkonyv.md`, `docs/validacio_jelentes.md`, `scripts/06_validalas.py`, `docs/valtozasnaplo.md`. Kétséges pont nem maradt; a PDF még nem készült el.
+
+## 2026-11-04 — munkakörnyezet-ellenőrzés
+
+- A wscheck jelzései alapján hozzáadtam a `.gitignore` szabályait a `.env` és a kulcsfájl-minták kizárására.
+- Létrehoztam az `.agent/workflows/adatbazis-veglegesites.md` projektmunkafolyamatot.
+- A GitHub CLI bejelentkezése a sandboxban a macOS Kulcskarikához nem fér hozzá, ezért az ottani ellenőrzés érvénytelennek mutatja a tokent. A felhasználó jelezte, hogy a `gh` a Terminálban működik, és a GitHub-műveleteket ott végzi; további `gh`-műveletet nem futtattam. A logoutkérés megszakadt, kijelentkeztetés nem történt.
+- A `.gitignore` megjegyzése rögzíti, hogy a `data/` nyilvános KSH- és NJT-forrásadatot, illetve a leadandó adatbázist tartalmaz, ezért a privát tárolóban verziókezelt; a `data/raw/cache/` továbbra is kizárt.
