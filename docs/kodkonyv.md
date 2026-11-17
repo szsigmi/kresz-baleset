@@ -59,3 +59,20 @@ Az éves tábla `valtozas_id` mezője a KRESZ-tábla kulcsára **many:1** kapcso
 A Statinfo kategóriarendszer 2011-től egységes. A KSH éves kerékpáros ittassági táblája jelzi, hogy 2024-től a rendőrség nem minden esetben vizsgálja a kerékpárosok ittasságát; a sor időbeli összevethetősége korlátozott. A havi teljes balesetszám éves összege a KSH 4.1.1.50 éves `Összesen` oszlopával ellenőrizhető.
 
 A korpuszokra írt sentiment-, Wordfish-, topikmodell-, TF-IDF- és mondattokenizálási vizsgálat nem értelmezhető jogszabályi összehasonlításra vagy aggregált havi/éves táblákra, ezért kimaradt. A normatív szövegeknél ellenőriztük a kötelező szövegmezők, UTF-8 olvashatóság és gyakori mojibake-jelölők jelenlétét.
+
+## `kresz_valtozasok_irany.csv` (2026-11-17)
+
+Egy sor = egy KRESZ-változás (95 sor), kapcsolókulcs: `valtozas_id`. A változás irányát a `docs/iranykod_kodkonyv.md` (v1) szerint nyelvi modell kódolta a `data/processed/iranykod/szovegek/` fájljaiból (`$vclassify`; modell és prompt: `data/processed/iranykod/models.md`, `prompt.md`). 25 véletlen elemet (mag = 1) a szerző vakon kézzel is kódolt; az egyezést a `scripts/09_iranykod_osszesites.py` számolja (`output/iranykod_egyezes.md`).
+
+| Változó | Jelentés |
+|---|---|
+| `valtozas_id`, `hatalybalepes`, `rendelkezes` | A változás azonosítója, hatálybalépése és az érintett rendelkezés (a KRESZ-táblából). |
+| `irany` | `SZIGORITAS`, `ENYHITES`, `SEMLEGES`, `VEGYES` vagy `NEM_BESOROLHATO`. |
+| `csoport`, `terulet` | Kire vonatkozik elsősorban, és melyik szabályterület (leíró mezők, egyezésvizsgálat nélkül). |
+| `indoklas`, `idezet` | Legfeljebb 20 szavas indoklás és a szövegből szó szerint idézett mondat(rész). |
+| `kodolo_modell`, `prompt_verzio` | A címkéző modell és a prompt verziója. |
+| `kezi_irany` | A kézi (vak) kód a mintába került 25 változásnál, egyébként üres. |
+
+## `szabalyozasi_szint_alkohol.csv` (2026-11-17)
+
+Az alkoholszabály szintje csoportonként és időszakonként, kézzel kódolva az NJT szövegéből (`data/raw/kezi_kodolas/`). Szintek: 0 = nincs szabályozás · 1 = csak a vezetésre képtelen állapot tilos · 2 = részleges zéró tolerancia · 3 = teljes zéró tolerancia. Kerékpárosok: 3 → 2 (2012-08-24, 228/2012. Korm. r.) → 1 (2014-07-19, 172/2014. Korm. r.); személygépkocsi-vezetők: végig 3. Oszlopok: `csoport`, `ervenyes_tol`, `ervenyes_ig`, `szint`, `szint_leiras`, `rendelkezes`, `valtozas_id`, `forras_url`, `megjegyzes`. A 2010 előtti időállapotok nem kerültek vizsgálatra.

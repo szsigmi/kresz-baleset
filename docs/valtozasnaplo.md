@@ -123,3 +123,10 @@
 - Elkészült a `data/processed/iranykod/prompt.md` v1 és a `models.md`; a prompt a `docs/iranykod_kodkonyv.md` v1 listáit és szabályait rögzíti. Külső API-t nem hívtam.
 - Ellenőriztem, hogy a szövegfájlok mappájában 95 fájl van, és tartalmilag áttekintettem az első 20-at; a `K2012-08-24_54-6-a.txt` érvényes UTF-8 szöveg, a korábbi terminálkimeneti zaj nem a fájl része.
 - A teljes címkézés, a `labels.csv`, a `label_check.py` futtatása és a commit ebben a munkamenetben nem készült el. A `/status` pontos modellreviziója, gondolkodási szintje és generálási beállításai az elérhető eszközökből nem voltak lekérdezhetők; a napló ezt jelzi.
+
+## 2026-11-17 – Elemzés, szintskála és irány-kódolás (Claude-munkamenet, a szerző jóváhagyásával)
+
+- **Elkészült:** `scripts/07_elemzes.py` (különbségek különbsége Newey–West SE-vel, robusztussági és placebo-becslések, összefoglaló statisztika, két ábra); `scripts/08_iranykod_elokeszites.py` (95 szövegfájl, 25 elemű kézi minta, mag = 1); `scripts/09_iranykod_osszesites.py` (címke-ellenőrzés, egyezés, végleges irány-tábla); `docs/iranykod_kodkonyv.md` (v1); `data/raw/kezi_kodolas/szabalyozasi_szint_alkohol.csv`; gyökér `README.md`; a `docs/kodkonyv.md` kiegészítése.
+- **Lelet:** a szintskála kitöltésekor derült ki, hogy a kerékpárosok 4. § (4) szerinti alkoholfelmentését már a 228/2012. Korm. rendelet bevezette (2012-08-24, főútvonal kivételével); a 2014-es módosítás ezt terjesztette ki. Az elemzés fő összevetése ezért 2001–2011 vs. 2015–2023 (2012 és 2014 átmeneti év).
+- **Irány-kódolás:** a Codex-futás (prompt v1) félbemaradt; a `labels.csv`-t a Claude készítette ugyanazzal a prompttal (`models.md`). `label_check`: 95 fájl, 0 hiba. Kézi vak kódolás (szerző, 25 elem): pontos egyezés 60%, κ = 0,47 – gyenge; az eltérések fele fogalommeghatározás és hivatkozás. Az irány-kód ezért csak leíró célú; a kódkönyv v2-je és új mintás ellenőrzés szükséges.
+- **Bizonytalan:** a 2010 előtti KRESZ-időállapotokat nem vizsgáltuk (a kerékpáros szint 2012 előtt a 4. § (4) beiktatási lábjegyzete alapján 3); a felsorolás-töredékek (33 változás) iránya a szülőszöveg nélkül nem dönthető el.

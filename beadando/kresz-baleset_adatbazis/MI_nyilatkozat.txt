@@ -1,0 +1,47 @@
+MI-NYILATKOZAT – KRESZ-változások és közúti balesetek adatbázis (v1.0, 2026. november 3.)
+
+A csomag tartalma: kresz_valtozasok.csv (95 sor), balesetek_havi.csv (180 sor),
+kerekpar_ittas_eves.csv (46 sor). UTF-8, vesszővel tagolt CSV. A változók leírása,
+a források, a feldolgozás naplója és a validálás a mellékelt kódkönyvben (PDF) található.
+
+1. Milyen eszközt használtunk?
+- Codex CLI (OpenAI): parancssori MI-ügynök a saját gépünkön. Egy általunk írt
+  szabályfájl (AGENTS.md) szerint dolgozott: semmit ne találjon ki, minden adatsorhoz
+  legyen forrás és letöltési dátum, a nyers fájlok érintetlenek maradjanak, és minden
+  lépés újrafuttatható szkriptből fusson. Az oktatói skilleket (datavalidation,
+  record-linkage, data-provenance-checker, codebook) is használta.
+- Claude (Anthropic): csevegő-asszisztens a tervezéshez, az eredmények átnézéséhez és a
+  kódkönyv megírásához.
+
+2. Mit végzett az MI?
+- A Codex letöltötte a KRESZ 2010–2025 közötti időállapotait a Nemzeti Jogszabálytárból,
+  szövegesen összevetette őket, megírta és lefuttatta a feldolgozó és ellenőrző
+  szkripteket (scripts/01–06), és előállította a három végleges táblát.
+- A Claude segített a kutatási kérdés szűkítésében és a munkalépések megtervezésében,
+  a nyers fájlokból újraszámolta a fő ellenőrzéseket, és megszövegezte a kódkönyvet.
+- Mi exportáltuk kézzel a KSH Statinfo-adatokat, választottuk ki a kutatási kérdést és a
+  vizsgált 2014-es KRESZ-módosítást, döntöttünk minden lépésnél, és átnéztük az eredményt.
+
+3. Hogyan ellenőriztük?
+- Minden feldolgozás szkriptből fut, verziókezelve (git, privát GitHub-tároló), a
+  munkamenetek a docs/valtozasnaplo.md fájlban vannak rögzítve.
+- 23 automatikus ellenőrzés fut le (scripts/06_validalas.py): sorszámok, azonosítók
+  egyedisége, hiányzó értékek, értéktartományok, belső összegek, a táblák újraépítése a
+  nyers fájlokból, a táblák közötti kapcsolatok. Eredmény: 0 eltérés.
+- Független forrás: a havi balesetszámok éves összege mind a 15 évben (2011–2025)
+  egyezik a KSH STADAT 4.1.1.50 tábla „Összesen” oszlopával.
+- A fő ellenőrzéseket egy második MI-eszköz (Claude) a nyers fájlokból külön is
+  újraszámolta.
+- Az ellenőrzés során valódi hibák derültek ki és javultak: egy hibás Statinfo-export
+  (a „kimenetel” fájlban okozói kategóriák voltak), a 2014-es szabályváltozás fordított
+  leírása, és egy független összevetés, amelyet az ügynök tévesen elvégezhetetlennek ítélt.
+
+4. Mi a fennmaradó kockázat?
+- A KRESZ-változásokat gépi szövegösszevetés azonosította. Bonyolult szerkezetű (pl.
+  függeléki) részeknél téves besorolás vagy összevont tétel előfordulhat, és az ilyen
+  sorok azonosítója nehezen olvasható.
+- A módosító rendelet szövegével csak a vizsgált 2014-es változást és négy
+  kontrollmintát vetettük össze.
+- A két MI-eszköz azonos hibát is véthet.
+- A KSH az előzetes adatokat utólag módosíthatja. 2024-től a rendőrség nem minden
+  kerékpárost vizsgál ittasságra, ezért a kerékpáros éves tábla 2023-mal zárul.
