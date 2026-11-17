@@ -117,3 +117,9 @@
 - Létrehoztam az `.agent/workflows/adatbazis-veglegesites.md` projektmunkafolyamatot.
 - A GitHub CLI bejelentkezése a sandboxban a macOS Kulcskarikához nem fér hozzá, ezért az ottani ellenőrzés érvénytelennek mutatja a tokent. A felhasználó jelezte, hogy a `gh` a Terminálban működik, és a GitHub-műveleteket ott végzi; további `gh`-műveletet nem futtattam. A logoutkérés megszakadt, kijelentkeztetés nem történt.
 - A `.gitignore` megjegyzése rögzíti, hogy a `data/` nyilvános KSH- és NJT-forrásadatot, illetve a leadandó adatbázist tartalmaz, ezért a privát tárolóban verziókezelt; a `data/raw/cache/` továbbra is kizárt.
+
+## 2026-11-17 — iránykódolás előkészítése (nem teljes)
+
+- Elkészült a `data/processed/iranykod/prompt.md` v1 és a `models.md`; a prompt a `docs/iranykod_kodkonyv.md` v1 listáit és szabályait rögzíti. Külső API-t nem hívtam.
+- Ellenőriztem, hogy a szövegfájlok mappájában 95 fájl van, és tartalmilag áttekintettem az első 20-at; a `K2012-08-24_54-6-a.txt` érvényes UTF-8 szöveg, a korábbi terminálkimeneti zaj nem a fájl része.
+- A teljes címkézés, a `labels.csv`, a `label_check.py` futtatása és a commit ebben a munkamenetben nem készült el. A `/status` pontos modellreviziója, gondolkodási szintje és generálási beállításai az elérhető eszközökből nem voltak lekérdezhetők; a napló ezt jelzi.
