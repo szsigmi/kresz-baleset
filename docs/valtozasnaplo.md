@@ -139,3 +139,10 @@
 - Az `ALLAPOT.md` az októberi helyett a jelenlegi állapotot írja le.
 - A szerző 2026-11-17-én törölte az üres `.gitkeep` helykitöltőket.
 - Adat, kód és eredmény nem változott. Az `AI_NAPLO.md`-hoz nem nyúltam.
+
+## 2026-11-18 – Végső ellenőrzés és javításai (Claude-munkamenet, a szerző kérésére)
+
+- Végső ellenőrzés friss, bejelentkezés nélküli klónból (commit `10a0df6`): `06` 23 ellenőrzés, 0 hiba; `07` −2,60 [−6,11; 0,91]; `09` 0 címkehiba, 60%, κ = 0,47. Az újrafuttatás után a `data/final` táblák változatlanok; két kimeneti CSV csak a 16. tizedesjegyben tért el (lebegőpontos kerekítés). Csomagletöltés nem volt elérhető, ezért a futtatás előre telepített csomagokkal (Python 3.13) történt.
+- `docs/kodkonyv.md`: megjegyzés a `kerekpar_ittas_eves.csv` `utana`, `atmeneti` és `valtozas_id` mezőjéről (az első, 2014-es tervet tükrözik, a `07` nem használja őket); a `szabalyozasi_szint_alkohol.csv` egyedi kulcsa és forrásdátuma; a validálási részből kikerült a szövegkorpuszokra vonatkozó, itt nem releváns elemzések felsorolása, a szövegellenőrzés leírása egyszerűbb lett.
+- `beadando/elemzes_20261117_v2.pdf`: a fejlécbe került a szerző neve; a PDF többi szövege nem változott, továbbra is 3 oldal.
+- Adat, kód és eredmény nem változott. Az `AI_NAPLO.md`-hoz nem nyúltam.

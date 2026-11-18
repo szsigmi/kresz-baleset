@@ -52,13 +52,15 @@ Egy sor = egy naptári év × okozótípus. A két KSH éves XLSX-ből 2001–20
 | `valtozas_id` | Kapcsolókulcs a 2014-07-19-i KRESZ 4. § (4) változáshoz. |
 | `forras_url`, `letoltes_datuma` | Két KSH-forrás XLSX URL-je és a letöltés napja. |
 
+**Megjegyzés:** az `utana`, az `atmeneti` és a `valtozas_id` mező az első, csak a 2014-es módosításra épülő elemzési tervet tükrözi. A 2012-es első lazítás felfedezése óta az elemzés (`scripts/07_elemzes.py`) ezeket nem használja: az időszakokat a `szabalyozasi_szint_alkohol.csv` alapján határozza meg (zéró tolerancia 2001–2011, teljes lazítás 2015–2023, átmeneti év 2012 és 2014). A mezők változatlanok maradtak, hogy a tábla a 3. blokkban leadott változattal összevethető legyen.
+
 ## Kapcsolatok, validálás és korlátok
 
 Az éves tábla `valtozas_id` mezője a KRESZ-tábla kulcsára **many:1** kapcsolatú: 46 forrássor mind a 2014-es rendelkezéshez kapcsolódik, 46/46 illesztéssel. A KRESZ-változás hatálybalépési hónapja és a havi `honap_id` kapcsolata szintén **many:1**. Minden hatálybalépési hónap szerepel a havi idősorban. A részletes sor- és illesztési számokat a `docs/validacio_jelentes.md` közli.
 
 A Statinfo kategóriarendszer 2011-től egységes. A KSH éves kerékpáros ittassági táblája jelzi, hogy 2024-től a rendőrség nem minden esetben vizsgálja a kerékpárosok ittasságát; a sor időbeli összevethetősége korlátozott. A havi teljes balesetszám éves összege a KSH 4.1.1.50 éves `Összesen` oszlopával ellenőrizhető.
 
-A korpuszokra írt sentiment-, Wordfish-, topikmodell-, TF-IDF- és mondattokenizálási vizsgálat nem értelmezhető jogszabályi összehasonlításra vagy aggregált havi/éves táblákra, ezért kimaradt. A normatív szövegeknél ellenőriztük a kötelező szövegmezők, UTF-8 olvashatóság és gyakori mojibake-jelölők jelenlétét.
+A jogszabályszövegeknél ellenőriztük, hogy a kötelező szövegmezők ki vannak töltve, és az ékezetes betűk helyesen olvashatók (nincs karakterkódolási hiba).
 
 ## `kresz_valtozasok_irany.csv` (2026-11-17)
 
@@ -75,4 +77,4 @@ Egy sor = egy KRESZ-változás (95 sor), kapcsolókulcs: `valtozas_id`. A válto
 
 ## `szabalyozasi_szint_alkohol.csv` (2026-11-17)
 
-Az alkoholszabály szintje csoportonként és időszakonként, kézzel kódolva az NJT szövegéből (`data/raw/kezi_kodolas/`). Szintek: 0 = nincs szabályozás · 1 = csak a vezetésre képtelen állapot tilos · 2 = részleges zéró tolerancia · 3 = teljes zéró tolerancia. Kerékpárosok: 3 → 2 (2012-08-24, 228/2012. Korm. r.) → 1 (2014-07-19, 172/2014. Korm. r.); személygépkocsi-vezetők: végig 3. Oszlopok: `csoport`, `ervenyes_tol`, `ervenyes_ig`, `szint`, `szint_leiras`, `rendelkezes`, `valtozas_id`, `forras_url`, `megjegyzes`. A 2010 előtti időállapotok nem kerültek vizsgálatra.
+Az alkoholszabály szintje csoportonként és időszakonként, kézzel kódolva az NJT szövegéből (`data/raw/kezi_kodolas/`). Szintek: 0 = nincs szabályozás · 1 = csak a vezetésre képtelen állapot tilos · 2 = részleges zéró tolerancia · 3 = teljes zéró tolerancia. Kerékpárosok: 3 → 2 (2012-08-24, 228/2012. Korm. r.) → 1 (2014-07-19, 172/2014. Korm. r.); személygépkocsi-vezetők: végig 3. Oszlopok: `csoport`, `ervenyes_tol`, `ervenyes_ig`, `szint`, `szint_leiras`, `rendelkezes`, `valtozas_id`, `forras_url`, `megjegyzes`. A 2010 előtti időállapotok nem kerültek vizsgálatra. Egyedi kulcs: a `csoport` és az `ervenyes_tol` mező együtt; üres `ervenyes_tol` = a vizsgált időszak eleje, üres `ervenyes_ig` = a szabály a legutolsó vizsgált időállapotban is érvényes. A `forras_url` mezőben szereplő NJT-időállapotok (19., 20., 27., 39. verzió) letöltési dátuma 2026-10-12; a fájlok a `data/raw/` mappában vannak.
