@@ -130,3 +130,12 @@
 - **Lelet:** a szintskála kitöltésekor derült ki, hogy a kerékpárosok 4. § (4) szerinti alkoholfelmentését már a 228/2012. Korm. rendelet bevezette (2012-08-24, főútvonal kivételével); a 2014-es módosítás ezt terjesztette ki. Az elemzés fő összevetése ezért 2001–2011 vs. 2015–2023 (2012 és 2014 átmeneti év).
 - **Irány-kódolás:** a Codex-futás (prompt v1) félbemaradt; a `labels.csv`-t a Claude készítette ugyanazzal a prompttal (`models.md`). `label_check`: 95 fájl, 0 hiba. Kézi vak kódolás (szerző, 25 elem): pontos egyezés 60%, κ = 0,47 – gyenge; az eltérések fele fogalommeghatározás és hivatkozás. Az irány-kód ezért csak leíró célú; a kódkönyv v2-je és új mintás ellenőrzés szükséges.
 - **Bizonytalan:** a 2010 előtti KRESZ-időállapotokat nem vizsgáltuk (a kerékpáros szint 2012 előtt a 4. § (4) beiktatási lábjegyzete alapján 3); a felsorolás-töredékek (33 változás) iránya a szülőszöveg nélkül nem dönthető el.
+
+## 2026-11-18 – Beadási mappa rendezése, README-ábra (Claude-munkamenet, a szerző kérésére)
+
+- A `beadando/` mappában csak a 4. blokk elemzése maradt; a korábbi beadások és munkaváltozatok változatlanul a `beadando/korabbi/` mappába kerültek. Az új `beadando/README.md` leírja, melyik fájl mi, és jelzi, hogy a korábbi anyagok számai eltérnek a végleges elemzéstől (pl. az októberi −2,808 pp még a 2001–2013-as „előtte” szakaszból jött).
+- Az októberi adatcsomag leírása `beadando/korabbi/README_elozetes_adatcsomag.md` néven, „elavult” megjegyzéssel maradt meg.
+- A gyökér `README.md` elejére került az 1. ábra és a leadott elemzés linkje; a „Mi hol van” táblázatban frissült a szkriptek (01–09) és a `beadando/` sora.
+- Az `ALLAPOT.md` az októberi helyett a jelenlegi állapotot írja le.
+- A szerző 2026-11-17-én törölte az üres `.gitkeep` helykitöltőket.
+- Adat, kód és eredmény nem változott. Az `AI_NAPLO.md`-hoz nem nyúltam.

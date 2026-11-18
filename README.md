@@ -2,7 +2,9 @@
 
 Egyetemi projekt az „AI a társadalomtudományokban” kurzusra. Az adatbázis a KRESZ (1/1975. (II. 5.) KPM–BM rendelet) 2011–2025 között hatályba lépett változásait kapcsolja össze a magyarországi személysérüléses közúti balesetek KSH-adataival. Minden változás irány-kódot kapott (szigorítás / enyhítés / semleges / vegyes), az alkoholszabályra pedig csoportonkénti szabályozási szint-skála készült. Az elemzés azt vizsgálja, hogyan változott az ittas okozás aránya a kerékpárosok által okozott balesetekben a kerékpárosok alkoholszabályának két enyhítése (2012, 2014) után, a személygépkocsi-vezetőkhöz képest (2001–2023).
 
-**Fő eredmény:** a teljes zéró tolerancia (2001–2011) és a teljes lazítás (2015–2023) évei között a különbségek különbsége −2,6 százalékpont, 95%-os konfidencia-intervallum [−6,1; +0,9]. Az ittas arány a kerékpárosoknál nem nőtt; a csökkenés nem különíthető el az idősor szokásos ingadozásától. Részletek: `beadando/` (elemzés PDF), `output/elemzes_eredmenyek.md`.
+**Fő eredmény:** a teljes zéró tolerancia (2001–2011) és a teljes lazítás (2015–2023) évei között a különbségek különbsége −2,6 százalékpont, 95%-os konfidencia-intervallum [−6,1; +0,9]. Az ittas arány a kerékpárosoknál nem nőtt; a csökkenés nem különíthető el az idősor szokásos ingadozásától. Részletek: [`beadando/elemzes_20261117_v2.pdf`](beadando/elemzes_20261117_v2.pdf) (a leadott, 3 oldalas elemzés MI-nyilatkozattal), `output/elemzes_eredmenyek.md`.
+
+![1. ábra: az ittasan okozott balesetek aránya a kerékpárosok és a személygépkocsi-vezetők által okozott balesetekben, 2001–2023; a háttérsávok a kerékpárosok szabályozási szintjét jelölik](output/abra1_ittas_arany.png)
 
 ## Mi hol van
 
@@ -13,10 +15,10 @@ Egyetemi projekt az „AI a társadalomtudományokban” kurzusra. Az adatbázis
 | `data/final/` | **A végleges adatbázis:** `kresz_valtozasok.csv` (95 sor), `balesetek_havi.csv` (180 sor), `kerekpar_ittas_eves.csv` (46 sor), `kresz_valtozasok_irany.csv` (95 sor, irány-kód), `szabalyozasi_szint_alkohol.csv` (szintskála). |
 | `data/raw/kezi_kodolas/` | Kézzel kódolt adatok: az alkoholszabály szint-skálája a jogszabályszöveg alapján. |
 | `data/processed/iranykod/` | Az irány-kódolás anyagai: szövegek, `prompt.md`, `models.md`, gépi címkék (`labels.csv`), kézi minta (`hand.csv`). |
-| `scripts/` | Számozott feldolgozó, ellenőrző és elemző szkriptek (01–07). |
+| `scripts/` | Számozott feldolgozó, ellenőrző és elemző szkriptek (01–09). |
 | `output/` | Ábrák, elemzési táblák, ellenőrzési eredmények. |
 | `docs/` | Kódkönyv (`kodkonyv.md`), az irány-kód kódkönyve (`iranykod_kodkonyv.md`), forráslista, validálási jelentés, változásnapló. |
-| `beadando/` | A leadott dokumentumok (kódkönyv és elemzés PDF-ben, adatcsomag). |
+| `beadando/` | A 4. blokk leadott elemzése (`elemzes_20261117_v2.pdf`). A korábbi beadások és munkaváltozatok a `beadando/korabbi/` mappában vannak; számaik eltérhetnek a végleges elemzéstől. |
 | `AGENTS.md` | Az MI-ügynök munkaszabályai ebben a projektben. |
 
 ## Reprodukálás
